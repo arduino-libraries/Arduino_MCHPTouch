@@ -1,6 +1,6 @@
 # MCHPTouch Library for Arduino
 
-This library allows you to read touch sensors values from your Arduino boards with touch sensors connected.
+This library allows you to read touch sensors values from the [Arduino MKR](https://store.arduino.cc/arduino-mkr-wifi-1010) boards and the [Arduino Nano 33 IoT](https://store.arduino.cc/arduino-nano-33-iot). Touch sensing is a hardware capability of the SAMD21 processor.
 
 ```c++
 #include "Arduino_MCHPTouch.h"
@@ -18,8 +18,6 @@ void loop() {
 ```
 
 See the bundled [examples](examples/) for usage and visit the [Microchip Developer](https://microchipdeveloper.com/touch:start) website to learn more about touch sensing.
-
-This feature is available on all SAMD21 boards such as the [Arduino MKR](https://store.arduino.cc/arduino-mkr-wifi-1010) family and the [Arduino Nano 33 IoT](https://store.arduino.cc/arduino-nano-33-iot).
 
 ## License
 
