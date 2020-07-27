@@ -1,0 +1,40 @@
+#######################################
+# Syntax Coloring Map For MCHPTouch
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Arduino_MCHPTouch	KEYWORD1
+QtouchClass	KEYWORD1
+TOUCH	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+touch_sensors_measure	KEYWORD2
+touch_sensors_init	KEYWORD2
+QtouchClass	KEYWORD2
+~QtouchClass	KEYWORD2
+begin	KEYWORD2
+poll	KEYWORD2
+available	KEYWORD2
+read	KEYWORD2
+setSensorsSensitivity	KEYWORD2
+setSensorsHysteresis	KEYWORD2
+getSensorsSensitivity	KEYWORD2
+getSensorsHysteresis	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+GET_SELFCAP_SENSOR_STATE	LITERAL1
+DEF_TOUCH_MEASUREMENT_PERIOD_MS	LITERAL1
+HYST_50	LITERAL1
+HYST_25	LITERAL1
+HYST_12_5	LITERAL1
+HYST_6_25	LITERAL1
+MAX_HYST	LITERAL1
