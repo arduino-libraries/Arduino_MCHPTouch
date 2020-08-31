@@ -1,4 +1,7 @@
 /* This source file is part of the ATMEL QTouch Library 5.0.1 */
+/* Software provided by Microchip under the license agreement 
+   “Microchip Touch Library License Agreement - Arduino 082420 
+   (part of this downloaded package) */
 
 /*****************************************************************************
  *
