@@ -984,6 +984,7 @@ void touch_sensors_update_time(void);
  * */
 void setHysteresis(hysteresis_t newHyst);
 void setSensitivity(unsigned int newSens);
+void setSensitivityChannel(unsigned int newSens, unsigned int btn_channel);
 hysteresis_t getHysteresis();
 unsigned int getSensitivity();
 
