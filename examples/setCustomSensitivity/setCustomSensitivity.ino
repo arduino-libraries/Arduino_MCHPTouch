@@ -6,7 +6,8 @@
   prints updates to the Serial Monitor.
 
   The circuit:
-  - Arduino MKR baord;
+  - Arduino MKR board;
+
   - MKR IoT carrier.
 
   This example code is in the public domain.
