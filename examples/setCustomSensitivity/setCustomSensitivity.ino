@@ -1,7 +1,8 @@
 /*
   Arduino_MCHPTouch - Sensor data read Example
   This example shows how to configure and read data
-  from touch sensors bottons on MKR IoT Carrier and
+  from touch sensor buttons on MKR IoT Carrier and
+
   prints updates to the Serial Monitor.
 
   The circuit:
