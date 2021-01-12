@@ -86,13 +86,24 @@ int QtouchClass::read(int sensor_id)
 
 /*******************************************************************************
  * Function Name  : setSensorsSensitivity
- * Description    : Sets the sensors sensitivity value
+ * Description    : Sets all the sensors sensitivity value
  * Input          : newSens - new configure Sensitivity value
  * Return         : NONE
  *******************************************************************************/
 void QtouchClass::setSensorsSensitivity(unsigned int newSens)
 {
   setSensitivity(newSens);
+}
+
+/*******************************************************************************
+ * Function Name  : setSensorsSensitivity
+ * Description    : Sets a sensor sensitivity value
+ * Input          : newSens - new configure Sensitivity value  , btn_channel - channel to apply that Sensitivity
+ * Return         : NONE
+ *******************************************************************************/
+void QtouchClass::setSensorsSensitivity(unsigned int newSens, unsigned int btn_channel)
+{
+  setSensitivityChannel(newSens, btn_channel);
 }
 
 /*******************************************************************************

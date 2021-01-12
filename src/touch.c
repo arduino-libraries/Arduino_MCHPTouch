@@ -88,10 +88,12 @@ touch_measure_data_t *p_selfcap_measure_data = NULL;
 
 /**
  * Default variables for the sensor config, then they are changed with
- * setHysteresis() and setSensivity() before the init
+ * setHysteresis() , setSensitivity() and setSensitivityChannel before the init
  */
 unsigned int _sensitivity = 5u;
-hysteresis_t _hysteresis = HYST_6_25;
+unsigned int _sensitivity_ch[5] = {5u , 5u, 5u, 5u, 5u};
+
+hysteresis_t _hysteresis = HYST_50;
 
 /*----------------------------------------------------------------------------
 *                               static variables
@@ -335,7 +337,7 @@ touch_ret_t touch_sensors_config(void)
 	sensor_id_t sensor_id;
 
 touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
-			CHANNEL_0, NO_AKS_GROUP,_sensitivity,
+			CHANNEL_0, NO_AKS_GROUP,_sensitivity_ch[0],
 			_hysteresis, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
@@ -344,7 +346,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 	}
 
 	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_1,
-			CHANNEL_1, NO_AKS_GROUP, _sensitivity,
+			CHANNEL_1, NO_AKS_GROUP, _sensitivity_ch[1],
 			_hysteresis, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
@@ -353,7 +355,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 	}
 
 	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_2,
-			CHANNEL_2,  NO_AKS_GROUP, _sensitivity,
+			CHANNEL_2,  NO_AKS_GROUP, _sensitivity_ch[2],
 			_hysteresis, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
@@ -362,7 +364,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 	}
 
 	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_3,
-			CHANNEL_3,  NO_AKS_GROUP, _sensitivity,
+			CHANNEL_3,  NO_AKS_GROUP, _sensitivity_ch[3],
 			_hysteresis, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
@@ -371,7 +373,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 	}
 
 		touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_4,
-			CHANNEL_4,  NO_AKS_GROUP, _sensitivity,
+			CHANNEL_4,  NO_AKS_GROUP, _sensitivity_ch[4],
 			_hysteresis, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
@@ -408,12 +410,18 @@ void setHysteresis(hysteresis_t newHyst){
 
 void setSensitivity(unsigned int newSens){
 	_sensitivity = newSens;
+	for (int i = 0; i < 5; i++){
+		_sensitivity_ch[i] = _sensitivity;
+	}
+}
+void setSensitivityChannel(unsigned int newSens, unsigned int btn_channel){
+	_sensitivity_ch[btn_channel] = newSens;
 }
 
 hysteresis_t getHysteresis() {
- return _hysteresis;
+ 	return _hysteresis;
 }
 
 unsigned int getSensitivity() {
- return _sensitivity;
+ 	return _sensitivity;
 }
