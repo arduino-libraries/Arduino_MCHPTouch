@@ -23,7 +23,7 @@ public:
   int available();
   int read(int sensor_id);
   void setSensorsSensitivity(unsigned int newSens);
-  void setSensorsSensitivityChannel(unsigned int newSens ,unsigned int btn_channel);
+  void setSensorsSensitivity(unsigned int newSens ,unsigned int btn_channel);
   void setSensorsHysteresis(hysteresis_t newHyst);
   unsigned int getSensorsSensitivity();
   hysteresis_t getSensorsHysteresis();
