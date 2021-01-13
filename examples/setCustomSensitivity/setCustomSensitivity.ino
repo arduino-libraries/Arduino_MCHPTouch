@@ -20,8 +20,8 @@ void setup()
   while (!Serial)
     ;
   //Set custom sens on X channel
-  //TOUCH.setSensorsSensitivity(*channel*, *newSensitivity*);
-  TOUCH.setSensorsSensitivity(0, 98);
+  //TOUCH.setSensorsSensitivity(*newSensitivity*, channel);
+  TOUCH.setSensorsSensitivity(98, 0);
   // Qtouch initialization
   if (!TOUCH.begin())
   {
