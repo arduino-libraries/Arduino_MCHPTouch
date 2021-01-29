@@ -16,7 +16,7 @@ QtouchClass TOUCH;
 
 #### See also
 
-* [begim()](#begin)
+* [begin()](#begin)
 * [poll()](#poll)
 
 
@@ -30,11 +30,7 @@ Initializes Qtouch sensors
 #### Syntax
 
 ```
-if(TOUCH.begin()){
-    // Everything OK
-}else{
-    // Failure
-}
+TOUCH.begin()
 ```
 
 #### Example
@@ -93,18 +89,17 @@ Gets the `sensor_id` state.
 
 ##### Syntax
 
-´´´
+```
 TOUCH.read(sensor_id)
-´´´
+```
+#### Parameters
+
+* sensor_id : number of the attached sensor
 
 ##### Returns
 0  - not activated
 1  - activated
 -1 - not found
-
-#### Parameters
-
-* sensor_id : number of the attached sensor
 
 #### Example
 
