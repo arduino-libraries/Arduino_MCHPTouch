@@ -156,10 +156,10 @@ Sets all the sensors sensitivity value, or to a specific sensor's.
 
 #### Syntax
 
-´´´
+```
 TOUCH.setSensorSensitivty()
 //TOUCH.setSensorSensitivty(btn_Channel, newSens)
-´´´
+```
 
 #### Parameters
 
@@ -176,9 +176,9 @@ TOUCH.setSensorSensitivty()
 Querys the Qtouch and returns the configured Sensitivity, or from a specific sensor's
 #### Syntax
 
-´´´
+```
 TOUCH.getSensorsSensitivity()
-´´´
+```
 
 #### Parameters
 
@@ -194,10 +194,10 @@ Sets all the sensors sensitivity value, or to a specific sensor's.
 
 #### Syntax
 
-´´´
+```
 TOUCH.setSensorSensitivty()
 //TOUCH.setSensorSensitivty(btn_Channel, newSens)
-´´´
+```
 
 #### Parameters
 
@@ -216,9 +216,9 @@ Querys the Qtouch and returns the configured hysteresis
 
 #### Syntax
 
-´´´
+```
 TOUCH.getSensorsHysteresis()
-´´´
+```
 
 #### Returns
 
@@ -235,9 +235,9 @@ Querys the Qtouch and returns the configured hysteresis
 
 #### Syntax
 
-´´´
+```
 TOUCH.setSensorsHysteresis(newHyst)
-´´´
+```
 
 #### Parameteres
 
