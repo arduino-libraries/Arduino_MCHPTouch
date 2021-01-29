@@ -70,7 +70,7 @@ TOUCH.available();
 
 ### `poll()`
 
-Updates the status of each capacitive sensor, it saves the values to be used later.
+Polls the qotuch sensors for new measure.
 
 #### Syntax
 
@@ -85,7 +85,7 @@ TOUCH.poll();
 
 ### `read()`
 
-Gets the `sensor_id` state.
+Querys the Qtouch and returns new touch measure.
 
 ##### Syntax
 
@@ -94,7 +94,7 @@ TOUCH.read(sensor_id)
 ```
 #### Parameters
 
-* sensor_id : number of the attached sensor
+* sensor_id : Sensor identificator
 
 ##### Returns
 0  - not activated
@@ -152,6 +152,8 @@ void loop()
 
 ### `setSensorsSensitivity()`
 
+Sets all the sensors sensitivity value, or to a specific sensor's.
+
 #### Syntax
 
 ´´´
@@ -167,9 +169,11 @@ TOUCH.setSensorSensitivty()
 #### See also
 
 * [getSensorsSensitivity()](#getSensorsSensitivity)
+* [setSensorsHysteresis()](#setSensorsHysteresis)
 
 ### `getSensorsSensitivity()`
 
+Querys the Qtouch and returns the configured Sensitivity, or from a specific sensor's
 #### Syntax
 
 ´´´
@@ -182,4 +186,69 @@ TOUCH.getSensorsSensitivity()
 
 #### See also
 
+* [setSensorsSensitivity()](#setSensorsSensitivity)
+
+### `setSensorsSensitivity()`
+
+Sets all the sensors sensitivity value, or to a specific sensor's.
+
+#### Syntax
+
+´´´
+TOUCH.setSensorSensitivty()
+//TOUCH.setSensorSensitivty(btn_Channel, newSens)
+´´´
+
+#### Parameters
+
+* (optional) btn_channel : sensor's number, to change only that sensitivity
+* newSens : new sensitivity  from 3 to 100
+
+#### See also
+
+* [getSensorsSensitivity()](#getSensorsSensitivity)
+* [setSensorsHysteresis()](#setSensorsHysteresis)
+
+
+### `getSensorsHysteresis()`
+
+Querys the Qtouch and returns the configured hysteresis
+
+#### Syntax
+
+´´´
+TOUCH.getSensorsHysteresis()
+´´´
+
+#### Returns
+
+Hysteresis
+
+#### See also
+
+* [setSensorsSensitivity()](#setSensorsSensitivity)
+
+
+### `setSensorsHysteresis()`
+
+Querys the Qtouch and returns the configured hysteresis
+
+#### Syntax
+
+´´´
+TOUCH.setSensorsHysteresis(newHyst)
+´´´
+
+#### Parameteres
+
+newHyst:
+    - HYST_50
+    - HYST_25
+    - HYST_12_5
+    - HYST_6_25
+    - MAX_HYST
+
+#### See also
+
+* [getSensorsHysteresis()](#getSensorsHysteresis)
 * [setSensorsSensitivity()](#setSensorsSensitivity)
