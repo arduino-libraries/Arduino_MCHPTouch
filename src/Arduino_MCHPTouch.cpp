@@ -135,6 +135,19 @@ unsigned int QtouchClass::getSensorsSensitivity()
 }
 
 /*******************************************************************************
+ * Function Name  : getSensorsSensitivity
+ * Description    : Querys the Qtouch and returns the configured Sensitivity
+ *                  value from a specific sensor
+ * Input          : btn_channel - sensor's number
+ * Return         : The Sensitivity value
+ *******************************************************************************/
+
+unsigned int QtouchClass::getSensorsSensitivity(unsigned int btn_channel)
+{
+  return getSensitivity(unsigned int btn_channel);
+}
+
+/*******************************************************************************
  * Function Name  : getSensorsHysteresis
  * Description    : Querys the Qtouch and returns the configured hysteresis
  *                  value
