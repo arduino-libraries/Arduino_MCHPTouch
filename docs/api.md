@@ -1,4 +1,4 @@
-# Servo library
+# MCHPTouch library
 
 ## Methods
 
