@@ -1,12 +1,12 @@
 /*
-  Arduino_MCHPTouch - Sensor data read Example
+  Arduino_MCHPTouch - Sensor data read example
   This example shows how to configure and read data
-  from touch sensors bottons on MKR IoT Carrier and
+  from touch sensor buttons on MKR IoT Carrier and
   prints updates to the Serial Monitor.
 
   The circuit:
-  - Arduino MKR baord;
-  - MKR IoT carrier.
+  - Arduino MKR board
+  - MKR IoT Carrier
 
   This example code is in the public domain.
 */
@@ -17,7 +17,7 @@ void setup()
   Serial.begin(9600);
   while (!Serial)
     ;
-  // Qtouch initialization
+  // QTouch initialization
   if (!TOUCH.begin())
   {
     Serial.println("Error in sensors initialization!");
@@ -29,7 +29,7 @@ void setup()
 
 void loop()
 {
-  // polling the sensor for new measure
+  // polling the sensor for new data
   TOUCH.poll();
 
   // Checks if new data are available

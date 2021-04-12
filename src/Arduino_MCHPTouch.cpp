@@ -18,7 +18,7 @@ QtouchClass::~QtouchClass()
 
 /*******************************************************************************
  * Function Name  : begin
- * Description    : Initializes Qtouch sensors
+ * Description    : Initializes QTouch sensors
  * Input          : NONE
  * Return         : false on Error, true on Success
  *******************************************************************************/
@@ -29,7 +29,7 @@ bool QtouchClass::begin()
   {
     return false;
   }
-  // set starting measure time to 0 and chenge the analog resolution to 10
+  // set starting measure time to 0 and change the analog resolution to 10
   touch_time.current_time_ms = 0;
   analogReadResolution(10);
   return true;
@@ -53,7 +53,7 @@ int QtouchClass::available()
 }
 /*******************************************************************************
  * Function Name  : poll
- * Description    : Polls the qotuch sensors for new measure
+ * Description    : Polls the QTouch sensors for new measure
  * Input          : NONE
  * Return         : NONE
  *******************************************************************************/
@@ -69,8 +69,8 @@ void QtouchClass::poll()
 
 /*******************************************************************************
  * Function Name  : read
- * Description    : Querys the Qtouch and returns new touch measure
- * Input          : sensor_id - Sensor identificator
+ * Description    : Queries the QTouch and returns new touch measure
+ * Input          : sensor_id - Sensor identification
  * Return         : -1 on Error, touch measure state on Success
  *******************************************************************************/
 int QtouchClass::read(int sensor_id)
@@ -124,7 +124,7 @@ void QtouchClass::setSensorsHysteresis(hysteresis_t newHyst)
 
 /*******************************************************************************
  * Function Name  : getSensorsSensitivity
- * Description    : Querys the Qtouch and returns the configured Sensitivity
+ * Description    : Queries the QTouch and returns the configured Sensitivity
  *                  value
  * Input          : NONE
  * Return         : The Sensitivity value
@@ -136,7 +136,7 @@ unsigned int QtouchClass::getSensorsSensitivity()
 
 /*******************************************************************************
  * Function Name  : getSensorsHysteresis
- * Description    : Querys the Qtouch and returns the configured hysteresis
+ * Description    : Queries the QTouch and returns the configured hysteresis
  *                  value
  * Input          : NONE
  * Return         : The hysteresis value
