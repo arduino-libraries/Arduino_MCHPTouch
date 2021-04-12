@@ -1,5 +1,7 @@
 # MCHPTouch Library for Arduino
 
+[![Spell Check status](https://github.com/arduino-libraries/Arduino_MCHPTouch/actions/workflows/spell-check.yml/badge.svg)](https://github.com/arduino-libraries/Arduino_MCHPTouch/actions/workflows/spell-check.yml)
+
 This library allows you to read touch sensors values from the [Arduino MKR](https://store.arduino.cc/arduino-mkr-wifi-1010) boards and the [Arduino Nano 33 IoT](https://store.arduino.cc/arduino-nano-33-iot). Touch sensing is a hardware capability of the SAMD21 processor.
 
 ```c++
