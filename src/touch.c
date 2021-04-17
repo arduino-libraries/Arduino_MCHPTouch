@@ -425,3 +425,7 @@ hysteresis_t getHysteresis() {
 unsigned int getSensitivity() {
  	return _sensitivity;
 }
+
+unsigned int getSensitivity(unsigned int btn_channel) {
+ 	return _sensitivity_ch[btn_channel];
+}
