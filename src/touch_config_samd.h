@@ -143,7 +143,7 @@
  * power consumption and response time.  Refer filter_level_t in touch_api_SAMD.h
  * Range: FILTER_LEVEL_1 (one sample) to FILTER_LEVEL_64 ( 64 samples).
  */
-#define  DEF_SELFCAP_FILTER_LEVEL FILTER_LEVEL_1            /* Filter level */
+#define  DEF_SELFCAP_FILTER_LEVEL FILTER_LEVEL_8 /* Filter level */
 
 /**
  * Self Cap auto oversample setting.
@@ -158,7 +158,7 @@
  * Range: AUTO_OS_DISABLE (oversample disabled) to AUTO_OS_128 (128
  * oversamples).
  */
-#define  DEF_SELFCAP_AUTO_OS AUTO_OS_4                /* Automatic OverSampling */
+#define  DEF_SELFCAP_AUTO_OS AUTO_OS_DISABLE                /* Automatic OverSampling */
 
 /**
  * Self Cap gain per touch channel.
@@ -169,7 +169,8 @@
  * Refer gain_t in touch_api_SAMD.h
  * Range:GAIN_1 (no scaling) to GAIN_32 (scale-up by 32)
  */
-#define DEF_SELFCAP_GAIN_PER_NODE   GAIN_2,GAIN_2,GAIN_2,GAIN_2,GAIN_2
+#define DEF_SELFCAP_GAIN_PER_NODE   GAIN_32,GAIN_32,GAIN_32,GAIN_32,GAIN_32
+
 /*----------------------------------------------------------------------------
 *   Tuning for Noise performance, touch response time and Power consumption.
 *  ----------------------------------------------------------------------------*/
@@ -280,13 +281,13 @@
  * Speicify period in milliseconds.  Example, DEF_TOUCH_MEASUREMENT_PERIOD_MS 50u
  * will perform measurement on touch sensors every 50msec.
  */
-#define DEF_TOUCH_MEASUREMENT_PERIOD_MS     10u
+#define DEF_TOUCH_MEASUREMENT_PERIOD_MS     30u
 
 /**
  * Self Cap Sensor detect integration (DI) limit.
  * Range: 0u to 255u.
  */
-#define   DEF_SELFCAP_DI         5u
+#define   DEF_SELFCAP_DI         0u
 
 /**
  * Self Cap Sensor towards touch drift rate.
@@ -294,7 +295,7 @@
  * Default value: 20 = 4 seconds.
  * Range: 1u to 127u.
  */
-#define  DEF_SELFCAP_TCH_DRIFT_RATE        10u
+#define  DEF_SELFCAP_TCH_DRIFT_RATE        30u
 
 /**
  * Self Cap Sensor away from touch drift rate.
@@ -318,14 +319,14 @@
  * Default value: 20 (hold off drifting for 4 seconds after leaving detect).
  * Range: 1u to 255u.
  */
-#define   DEF_SELFCAP_DRIFT_HOLD_TIME        10u
+#define   DEF_SELFCAP_DRIFT_HOLD_TIME        30u
 
 /**
  * Self Cap Sensor away from touch recalibration delay.
  * Default value: 10.
  * Range: 1u to 255u.
  */
-#define   DEF_SELFCAP_ATCH_RECAL_DELAY       10u
+#define   DEF_SELFCAP_ATCH_RECAL_DELAY       1u
 
 /** Self Cap Sensor away from touch recalibration threshold.
  * Default: RECAL_50 (recalibration threshold = 50% of detection threshold).
@@ -353,6 +354,11 @@
  */
 #define DEF_SELFCAP_FILTER_CALLBACK              (NULL)
 
+/**********************************************************/
+/***************** Communication - Data Streamer ******************/
+/**********************************************************/
 
+#define DEF_TOUCH_DATA_STREAMER_ENABLE 1u
+#define DATA_STREAMER_BOARD_TYPE USER_BOARD
 
 #endif /* TOUCH_CONFIG_SAMD_H */

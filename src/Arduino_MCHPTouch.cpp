@@ -32,6 +32,9 @@ bool QtouchClass::begin()
   // set starting measure time to 0 and change the analog resolution to 10
   touch_time.current_time_ms = 0;
   analogReadResolution(10);
+  if (DEF_TOUCH_DATA_STREAMER_ENABLE == 1) {
+    Serial1.begin(115200);
+  }
   return true;
 }
 
@@ -61,7 +64,7 @@ void QtouchClass::poll()
 {
   // set time flag to 1 and starting time millis()
   touch_time.time_to_measure_touch = 1;
-  touch_time.current_time_ms = touch_time.current_time_ms + millis();
+  touch_time.current_time_ms = millis();// touch_time.current_time_ms + millis();
 
   // trigger a new measure
   touch_sensors_measure();

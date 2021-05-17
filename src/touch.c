@@ -46,7 +46,7 @@
  */
 #include <Arduino.h>
 #include "touch_api_SAMD.h"
-
+//#include "datastreamer/datastreamer.h"
 /*----------------------------------------------------------------------------
 *                           manifest constants
 *  ----------------------------------------------------------------------------*/
@@ -67,7 +67,9 @@
 /*----------------------------------------------------------------------------
 *                           Structure Declarations
 *  ----------------------------------------------------------------------------*/
-
+/* Node status, signal, calibration values */
+qtm_acq_node_data_t ptc_qtlib_node_stat1[DEF_SELFCAP_NUM_CHANNELS];
+qtm_touch_key_data_t qtlib_key_data_set1[DEF_SELFCAP_NUM_SENSORS];
 /*----------------------------------------------------------------------------
 *                               global variables
 *  ----------------------------------------------------------------------------*/
@@ -90,11 +92,12 @@ touch_measure_data_t *p_selfcap_measure_data = NULL;
  * Default variables for the sensor config, then they are changed with
  * setHysteresis() , setSensitivity() and setSensitivityChannel before the init
  */
-unsigned int _sensitivity = 5u;
-unsigned int _sensitivity_ch[5] = {5u , 5u, 5u, 5u, 5u};
+unsigned int _sensitivity = 50u;
+unsigned int _sensitivity_ch[5] = {50u , 50u, 50u, 50u, 50u};
 
-hysteresis_t _hysteresis = HYST_50;
+hysteresis_t _hysteresis = HYST_6_25;
 
+uint8_t module_error_code = 0;
 /*----------------------------------------------------------------------------
 *                               static variables
 *  ----------------------------------------------------------------------------*/
@@ -290,10 +293,9 @@ touch_ret_t touch_sensors_init(void)
 	 */
 	touch_ret = touch_selfcap_sensors_calibrate(AUTO_TUNE_RSEL);
 	if (touch_ret != TOUCH_SUCCESS) {
-		while (1u) {    /* Check API Error return code. */
+		while (1) {    /* Check API Error return code. */
 		}
 	}
-
 	return (touch_ret);
 }
 
@@ -338,7 +340,7 @@ touch_ret_t touch_sensors_config(void)
 
 touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 			CHANNEL_0, NO_AKS_GROUP,_sensitivity_ch[0],
-			_hysteresis, RES_1_BIT,
+			HYST_6_25, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
 		while (1) {
@@ -347,7 +349,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 
 	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_1,
 			CHANNEL_1, NO_AKS_GROUP, _sensitivity_ch[1],
-			_hysteresis, RES_1_BIT,
+			HYST_6_25, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
 		while (1) {
@@ -356,7 +358,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 
 	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_2,
 			CHANNEL_2,  NO_AKS_GROUP, _sensitivity_ch[2],
-			_hysteresis, RES_1_BIT,
+			HYST_6_25, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
 		while (1) {
@@ -365,7 +367,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 
 	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_3,
 			CHANNEL_3,  NO_AKS_GROUP, _sensitivity_ch[3],
-			_hysteresis, RES_1_BIT,
+			HYST_6_25, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
 		while (1) {
@@ -374,7 +376,7 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 
 		touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_4,
 			CHANNEL_4,  NO_AKS_GROUP, _sensitivity_ch[4],
-			_hysteresis, RES_1_BIT,
+			HYST_6_25, RES_1_BIT,
 			&sensor_id);
 	if (touch_ret != TOUCH_SUCCESS) {
 		while (1) {
@@ -414,6 +416,7 @@ void setSensitivity(unsigned int newSens){
 		_sensitivity_ch[i] = _sensitivity;
 	}
 }
+
 void setSensitivityChannel(unsigned int newSens, unsigned int btn_channel){
 	_sensitivity_ch[btn_channel] = newSens;
 }
@@ -424,4 +427,44 @@ hysteresis_t getHysteresis() {
 
 unsigned int getSensitivity() {
  	return _sensitivity;
+}
+
+uint16_t get_sensor_node_signal(uint16_t sensor_node)
+{
+	return (p_selfcap_measure_data->p_channel_signals[sensor_node]);
+}
+
+void update_sensor_node_signal(uint16_t sensor_node, uint16_t new_signal)
+{
+	p_selfcap_measure_data->p_channel_signals[sensor_node] = new_signal;
+}
+
+uint16_t get_sensor_node_reference(uint16_t sensor_node)
+{
+	return (p_selfcap_measure_data->p_channel_references[sensor_node]);
+}
+
+void update_sensor_node_reference(uint16_t sensor_node, uint16_t new_reference)
+{
+	p_selfcap_measure_data[sensor_node].p_channel_references[sensor_node] = new_reference;
+}
+
+uint16_t get_sensor_cc_val(uint16_t sensor_node)
+{
+	return (p_selfcap_measure_data->p_cc_calibration_vals[sensor_node]);
+}
+
+void update_sensor_cc_val(uint16_t sensor_node, uint16_t new_cc_value)
+{
+	p_selfcap_measure_data->p_cc_calibration_vals[sensor_node] = new_cc_value;
+}
+
+uint8_t get_sensor_state(uint16_t sensor_node)
+{
+	return GET_SELFCAP_SENSOR_STATE(sensor_node);
+}
+
+void update_sensor_state(uint16_t sensor_node, uint8_t new_state)
+{
+	p_selfcap_measure_data->p_sensor_states[sensor_node] = new_state;
 }

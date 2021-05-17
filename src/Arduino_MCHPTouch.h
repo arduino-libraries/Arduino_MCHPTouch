@@ -11,7 +11,7 @@
 
 #include <Arduino.h>
 #include "touch_api_SAMD.h"
-
+#include "DataStreamer.h"
 class QtouchClass
 {
 

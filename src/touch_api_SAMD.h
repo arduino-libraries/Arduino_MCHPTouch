@@ -165,7 +165,7 @@ extern "C"
 /**
  * Max position hysteresis allowed
  */
-#define TOUCH_MAX_POS_HYST              (20u)
+#define TOUCH_MAX_POS_HYST              (100u)
 
 /*----------------------------------------------------------------------------
 *                          Mutual cap  macros
@@ -957,7 +957,14 @@ extern touch_measure_data_t *p_mutlcap_measure_data;
 /*----------------------------------------------------------------------------
 *                               prototypes
 *  ----------------------------------------------------------------------------*/
-
+uint16_t get_sensor_node_signal(uint16_t sensor_node);
+void     update_sensor_node_signal(uint16_t sensor_node, uint16_t new_signal);
+uint16_t get_sensor_node_reference(uint16_t sensor_node);
+void     update_sensor_node_reference(uint16_t sensor_node, uint16_t new_reference);
+uint16_t get_sensor_cc_val(uint16_t sensor_node);
+void     update_sensor_cc_val(uint16_t sensor_node, uint16_t new_cc_value);
+uint8_t  get_sensor_state(uint16_t sensor_node);
+void     update_sensor_state(uint16_t sensor_node, uint8_t new_state);
 /*! \name Touch Helper API.
  */
 /* ! @{ */
@@ -988,6 +995,91 @@ void setSensitivityChannel(unsigned int newSens, unsigned int btn_channel);
 hysteresis_t getHysteresis();
 unsigned int getSensitivity();
 
+
+/* Acquisition module SAMD21 Sequential */
+
+typedef struct {
+	uint8_t  node_acq_status;
+	uint16_t node_acq_signals;
+	uint16_t node_comp_caps;
+} qtm_acq_node_data_t;
+
+
+typedef struct {
+	uint16_t node_xmask;        /* Selects the X Pins for this node */
+	uint16_t node_ymask;        /* Selects the Y Pins for this node */
+	uint8_t  node_rsel_prsc;    /* Bits 7:4 = Resistor, Bits 3:0  Prescaler */
+	uint8_t  node_gain;         /* Bits 7:4 = Analog gain, Bits 3:0 = Digital gain */
+	uint8_t  node_oversampling; /* Accumulator setting  */
+} qtm_acq_samd21_node_config_t;
+
+/* Node run-time data - Defined in common api as it will be used with all acquisition modules */
+
+/* Node group configuration */
+typedef struct {
+	uint16_t num_sensor_nodes;       /* Number of sensor nodes */
+	uint8_t  acq_sensor_type;        /* Self or mutual sensors */
+	uint8_t  calib_option_select;    /* Hardware tuning: XX | TT 3/4/5 Tau | X | XX None/RSEL/PRSC/CSD */
+	uint8_t  freq_option_select;     /* SDS or ASDV setting */
+	uint8_t  ptc_interrupt_priority; /* Runtime priority of PTC interrupt */
+} qtm_acq_node_group_config_t;
+
+/* Container structure for sensor group */
+typedef struct {
+	qtm_acq_node_group_config_t(*qtm_acq_node_group_config);
+	qtm_acq_samd21_node_config_t(*qtm_acq_node_config);
+	qtm_acq_node_data_t(*qtm_acq_node_data);
+} qtm_acquisition_control_t;
+
+/* Key process module */
+/* Sensor group config */
+typedef struct {
+	uint16_t num_key_sensors;              /* Number of sensors */
+	uint8_t  sensor_touch_di;              /* Count in to Detect */
+	uint8_t  sensor_max_on_time;           /* Max on duration x 200ms */
+	uint8_t  sensor_anti_touch_di;         /* Count in to Anti-touch recal */
+	uint8_t  sensor_anti_touch_recal_thr;  /* Anti-touch recal threshold % */
+	uint8_t  sensor_touch_drift_rate;      /* One count per <200> ms */
+	uint8_t  sensor_anti_touch_drift_rate; /* One count per <200> ms */
+	uint8_t  sensor_drift_hold_time;       /* Drift hold time */
+	uint8_t  sensor_reburst_mode;          /* None / Unresolved / All */
+} qtm_touch_key_group_config_t;
+
+/* Sensor group data */
+typedef struct {
+	uint8_t  qtm_keys_status;     /* Status byte - bitfield: Bit 7 = REBURST_REQ, Bits 6:1 = Reserved, Bit 0 = Detect */
+	uint16_t acq_group_timestamp; /* For tracking this group drift etc */
+	uint8_t  dht_count_in;        /* Count of drift hold time */
+	uint8_t  tch_drift_count_in;  /* Count of towards touch drift */
+	uint8_t  antitch_drift_count_in; /* Count of away from touch drift */
+} qtm_touch_key_group_data_t;
+
+/* Sensor keys config */
+typedef struct {
+	uint8_t channel_threshold;  /* Touch detection threshold */
+	uint8_t channel_hysteresis; /* Percentage of threshold reduction to exit detect state */
+	uint8_t channel_aks_group;  /* 0 = None, 1-255 = group number */
+} qtm_touch_key_config_t;
+
+/* ---------------------------------------------------------------------------------------- */
+/* Key sensor run-time data - api common */
+/* ---------------------------------------------------------------------------------------- */
+
+typedef struct {
+	uint8_t              sensor_state;         /* Disabled, Off, On, Filter, Cal... */
+	uint8_t              sensor_state_counter; /* State counter */
+	qtm_acq_node_data_t *node_data_struct_ptr; /* Pointer to node data structure */
+	uint16_t             channel_reference;    /* Reference signal */
+} qtm_touch_key_data_t;
+
+
+/* Container */
+typedef struct {
+	qtm_touch_key_group_data_t(*qtm_touch_key_group_data);
+	qtm_touch_key_group_config_t(*qtm_touch_key_group_config);
+	qtm_touch_key_data_t(*qtm_touch_key_data);
+	qtm_touch_key_config_t(*qtm_touch_key_config);
+} qtm_touch_key_control_t;
 /* ! @} */
 
 /*----------------------------------------------------------------------------
@@ -1241,8 +1333,4 @@ void touch_selfcap_rs_table_init(void);
 #ifdef __cplusplus
 }
 #endif
-
-/**
- * \}
- */
 #endif                          /* TOUCH_API_SAMD_H */
