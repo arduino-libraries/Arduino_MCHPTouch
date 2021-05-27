@@ -1,0 +1,59 @@
+
+
+
+B,1,1,FrameCounter
+
+
+
+
+
+
+
+
+
+
+
+
+D,2,1,Signal0
+D,3,1,Reference0
+-D,4,1,Delta0
+D,5,1,Compensation0,F,(variable & 0x0F)*0.00675+((variable >> 4) & 0x0F)*0.0675+((variable >> 8) & 0x0F)*0.675+((variable >> 12) & 0x3) * 6.75
+B,6,1,State0
+B,7,1,Threshold0
+D,2,2,Signal1
+D,3,2,Reference1
+-D,4,2,Delta1
+D,5,2,Compensation1,F,(variable & 0x0F)*0.00675+((variable >> 4) & 0x0F)*0.0675+((variable >> 8) & 0x0F)*0.675+((variable >> 12) & 0x3) * 6.75
+B,6,2,State1
+B,7,2,Threshold1
+D,2,3,Signal2
+D,3,3,Reference2
+-D,4,3,Delta2
+D,5,3,Compensation2,F,(variable & 0x0F)*0.00675+((variable >> 4) & 0x0F)*0.0675+((variable >> 8) & 0x0F)*0.675+((variable >> 12) & 0x3) * 6.75
+B,6,3,State2
+B,7,3,Threshold2
+D,2,4,Signal3
+D,3,4,Reference3
+-D,4,4,Delta3
+D,5,4,Compensation3,F,(variable & 0x0F)*0.00675+((variable >> 4) & 0x0F)*0.0675+((variable >> 8) & 0x0F)*0.675+((variable >> 12) & 0x3) * 6.75
+B,6,4,State3
+B,7,4,Threshold3
+D,2,5,Signal4
+D,3,5,Reference4
+-D,4,5,Delta4
+D,5,5,Compensation4,F,(variable & 0x0F)*0.00675+((variable >> 4) & 0x0F)*0.0675+((variable >> 8) & 0x0F)*0.675+((variable >> 12) & 0x3) * 6.75
+B,6,5,State4
+B,7,5,Threshold4
+
+
+
+
+
+
+
+
+
+
+B,9,1,QTouchLibError
+
+B,1,2,FRAME_END
