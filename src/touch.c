@@ -383,6 +383,51 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 		}
 	}
 
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_5,
+			CHANNEL_5,  NO_AKS_GROUP, _sensitivity_ch[5],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_6,
+			CHANNEL_6,  NO_AKS_GROUP, _sensitivity_ch[6],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_7,
+			CHANNEL_7,  NO_AKS_GROUP, _sensitivity_ch[7],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_8,
+			CHANNEL_8,  NO_AKS_GROUP, _sensitivity_ch[8],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_9,
+			CHANNEL_9,  NO_AKS_GROUP, _sensitivity_ch[9],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
 	return (touch_ret);
 }
 
