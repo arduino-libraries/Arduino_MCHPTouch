@@ -93,7 +93,7 @@ touch_measure_data_t *p_selfcap_measure_data = NULL;
  * setHysteresis() , setSensitivity() and setSensitivityChannel before the init
  */
 unsigned int _sensitivity = 50u;
-unsigned int _sensitivity_ch[5] = {50u , 50u, 50u, 50u, 50u};
+unsigned int _sensitivity_ch[10] = {50u , 50u, 50u, 50u, 50u, 50u , 50u, 50u, 50u, 50u};
 
 hysteresis_t _hysteresis = HYST_6_25;
 
@@ -457,7 +457,7 @@ void setHysteresis(hysteresis_t newHyst){
 
 void setSensitivity(unsigned int newSens){
 	_sensitivity = newSens;
-	for (int i = 0; i < 5; i++){
+	for (int i = 0; i < DEF_SELFCAP_LINES; i++){
 		_sensitivity_ch[i] = _sensitivity;
 	}
 }
