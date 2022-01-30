@@ -759,7 +759,7 @@ typedef struct tag_touch_measure_data_t {
 	/* ! Number of sensor state bytes. */
 	uint8_t num_sensor_states;
 	/* ! Pointer to Touch Status of each sensor. */
-	uint8_t *p_sensor_states;
+	uint16_t *p_sensor_states;
 	/* ! Length of the Rotor and Slider position values list. */
 	uint8_t num_rotor_slider_values;
 	/* ! Pointer to Rotor and Slider position values. */
