@@ -128,11 +128,11 @@ extern "C"
 /* Self capacitance method */
    #define GET_SELFCAP_SENSOR_STATE(SENSOR_NUMBER) p_selfcap_measure_data-> \
 	p_sensor_states[(SENSOR_NUMBER / \
-	8)] & (1 << (SENSOR_NUMBER % 8))
+	16)] & (1 << (SENSOR_NUMBER % 16))
 /* Mutual capacitance method */
    #define GET_MUTLCAP_SENSOR_STATE(SENSOR_NUMBER) p_mutlcap_measure_data-> \
 	p_sensor_states[(SENSOR_NUMBER / \
-	8)] & (1 << (SENSOR_NUMBER % 8))
+	16)] & (1 << (SENSOR_NUMBER % 16))
 
 /**
  * \def GET_ROTOR_SLIDER_POSITION(ROTOR_SLIDER_NUMBER)
