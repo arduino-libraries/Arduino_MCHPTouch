@@ -92,7 +92,7 @@
  * the touch channel (nodes) are specified below.  Touch channel numbering
  * follows the order in which Y lines are specified.
  */
-#define DEF_SELFCAP_LINES  Y(4), Y(8), Y(9), Y(2), Y(3)
+#define DEF_SELFCAP_LINES  Y(0), Y(8), Y(9), Y(2), Y(3)
 
 /*----------------------------------------------------------------------------
 *              Self Cap method channel and sensor configuration.
