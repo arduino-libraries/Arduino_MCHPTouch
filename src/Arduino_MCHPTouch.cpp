@@ -102,12 +102,12 @@ void QtouchClass::setSensorsSensitivity(unsigned int newSens)
  * Function Name  : setTouchPad
  * Description    : Sets the touch's pad zero in accord with the carrier
  *                  version
- * Input          : new_version - carrier revision
+ * Input          : pad - desired pad
  * Return         : NONE
  *******************************************************************************/
-void QtouchClass::setTouchPad(bool new_version)
+void QtouchClass::setTouchPad(int pad)
 {
-  setTouchZero(new_version);
+  setTouchZero(pad);
 }
 
 /*******************************************************************************
