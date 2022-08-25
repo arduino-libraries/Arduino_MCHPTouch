@@ -96,7 +96,7 @@ unsigned int _sensitivity = 50u;
 unsigned int _sensitivity_ch[5] = {50u , 50u, 50u, 50u, 50u};
 
 hysteresis_t _hysteresis = HYST_6_25;
-
+int _pad = 0;
 uint8_t module_error_code = 0;
 /*----------------------------------------------------------------------------
 *                               static variables
@@ -258,6 +258,8 @@ touch_ret_t touch_sensors_init(void)
 
 	touch_time.measurement_period_ms = DEF_TOUCH_MEASUREMENT_PERIOD_MS;
 
+	touch_config.p_selfcap_config->p_selfcap_y_nodes[0] = Y(_pad);
+
 	/* Initialize touch library for Self Cap operation. */
 	touch_ret = touch_selfcap_sensors_init(&touch_config);
 	if (touch_ret != TOUCH_SUCCESS) {
@@ -415,6 +417,10 @@ void setSensitivity(unsigned int newSens){
 	for (int i = 0; i < 5; i++){
 		_sensitivity_ch[i] = _sensitivity;
 	}
+}
+
+void setTouchZero(int pad){
+	_pad = pad;
 }
 
 void setSensitivityChannel(unsigned int newSens, unsigned int btn_channel){
