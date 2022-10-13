@@ -994,7 +994,7 @@ void setSensitivity(unsigned int newSens);
 void setSensitivityChannel(unsigned int newSens, unsigned int btn_channel);
 hysteresis_t getHysteresis();
 unsigned int getSensitivity();
-void setTouchZero(int pad);
+void setPads(int *pad);
 
 /* Acquisition module SAMD21 Sequential */
 
