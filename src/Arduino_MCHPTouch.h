@@ -23,7 +23,7 @@ public:
   int available();
   int read(int sensor_id);
   void setSensorsSensitivity(unsigned int newSens);
-  void setTouchPad(int pad = 0);
+  void setTouchPad(int pad0, int pad1 = -1, int pad2 = -1, int pad3 = -1, int pad4 = -1);
   void setSensorsSensitivity(unsigned int newSens ,unsigned int btn_channel);
   void setSensorsHysteresis(hysteresis_t newHyst);
   unsigned int getSensorsSensitivity();
