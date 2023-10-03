@@ -27,6 +27,6 @@ See the bundled [examples](examples/) for usage and visit the [Microchip Develop
 
 This library is a wrapper around the MCHPTouch library by Microchip, which is bundled in binary form in this distribution in agreement with Microchip.
 
-> Microchip Technology Inc., provides the Microchip Touch Library software subject to the license terms contained at the link below.  By using the Microchip Touch Library, you acknowledge and agree to the terms of the license contained at the link below. [Microchip Touch Library License Agreement](Microchip%20Touch%20Library%20License%20Agreement%20-%20Arduino%20082420.pdf)
+> Microchip Technology Inc., provides the Microchip Touch Library software subject to the license terms contained at the link below. By using the Microchip Touch Library, you acknowledge and agree to the terms of the license contained at the link below. [Microchip Touch Library License Agreement](Microchip%20Touch%20Library%20License%20Agreement%20-%20Arduino%20082420.pdf)
 
 The Arduino_MCHPTouch wrapper library is distributed under the terms of the MPL-2.0 license.

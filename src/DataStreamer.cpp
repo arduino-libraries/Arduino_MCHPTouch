@@ -71,7 +71,7 @@ extern uint8_t module_error_code;
 /*============================================================================
 void datastreamer_output(void)
 ------------------------------------------------------------------------------
-Purpose: Forms the datastreamer frame based on the configured modules, Tranmits
+Purpose: Forms the datastreamer frame based on the configured modules, Transmits
          the frame as single packet through UART port.
 Input  : none
 Output : none
