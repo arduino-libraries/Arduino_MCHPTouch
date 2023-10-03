@@ -35,7 +35,7 @@ void loop()
   // Checks if new data are available
   if (TOUCH.available())
   {
-    //reads senseors
+    //reads sensors
     Serial.print("Sensor 1 status: ");
     Serial.println(TOUCH.read(0));
     Serial.print("Sensor 2 status: ");
