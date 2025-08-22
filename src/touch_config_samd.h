@@ -92,7 +92,7 @@
  * the touch channel (nodes) are specified below.  Touch channel numbering
  * follows the order in which Y lines are specified.
  */
-#define DEF_SELFCAP_LINES  Y(0), Y(8), Y(9), Y(2), Y(3)
+#define DEF_SELFCAP_LINES  Y(0), Y(1), Y(2), Y(3), Y(4), Y(5), Y(8), Y(9), Y(14), Y(15)
 
 /*----------------------------------------------------------------------------
 *              Self Cap method channel and sensor configuration.
@@ -105,7 +105,7 @@
  * using 3 touch channels.
  * Range: 1u to 16u.
  */
-#define DEF_SELFCAP_NUM_CHANNELS   (5) /* Total number of channels */
+#define DEF_SELFCAP_NUM_CHANNELS   (10) /* Total number of channels */
 
 /**
  * Self Cap number of Sensors.
@@ -117,7 +117,7 @@
  * the number of sensors is 6 key + 1 rotor + 1 slider = 8 sensors.
  * Range: 1u to 16u.
  */
-#define DEF_SELFCAP_NUM_SENSORS  (5)  /* Total number of sensors */
+#define DEF_SELFCAP_NUM_SENSORS  (10)  /* Total number of sensors */
 
 /**
  * Self Cap number of Rotors and Sliders.
