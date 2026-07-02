@@ -93,7 +93,7 @@ touch_measure_data_t *p_selfcap_measure_data = NULL;
  * setHysteresis() , setSensitivity() and setSensitivityChannel before the init
  */
 unsigned int _sensitivity = 50u;
-unsigned int _sensitivity_ch[5] = {50u , 50u, 50u, 50u, 50u};
+unsigned int _sensitivity_ch[10] = {50u , 50u, 50u, 50u, 50u, 50u , 50u, 50u, 50u, 50u};
 
 hysteresis_t _hysteresis = HYST_6_25;
 int _pad[5] = {-1,-1,-1,-1,-1};
@@ -386,6 +386,51 @@ touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_0,
 		}
 	}
 
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_5,
+			CHANNEL_5,  NO_AKS_GROUP, _sensitivity_ch[5],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_6,
+			CHANNEL_6,  NO_AKS_GROUP, _sensitivity_ch[6],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_7,
+			CHANNEL_7,  NO_AKS_GROUP, _sensitivity_ch[7],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_8,
+			CHANNEL_8,  NO_AKS_GROUP, _sensitivity_ch[8],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
+	touch_ret = touch_selfcap_sensor_config(SENSOR_TYPE_KEY, CHANNEL_9,
+			CHANNEL_9,  NO_AKS_GROUP, _sensitivity_ch[9],
+			HYST_6_25, RES_1_BIT,
+			&sensor_id);
+	if (touch_ret != TOUCH_SUCCESS) {
+		while (1) {
+		}
+	}
+
 	return (touch_ret);
 }
 
@@ -415,7 +460,7 @@ void setHysteresis(hysteresis_t newHyst){
 
 void setSensitivity(unsigned int newSens){
 	_sensitivity = newSens;
-	for (int i = 0; i < 5; i++){
+	for (int i = 0; i < DEF_SELFCAP_LINES; i++){
 		_sensitivity_ch[i] = _sensitivity;
 	}
 }
